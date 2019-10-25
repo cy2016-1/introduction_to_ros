@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ROS安装过程及总结</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>ROS安装过程中遇到的问题总结</h1>
+<h2>1.Ubuntu16.04：sudo apt-get update 遇到的一些问题与解决方法</h2>
+<h4>Ubuntu 16.04出现：Problem executing scripts APT::Update::Post-Invoke-Success 'if /usr/bin/test -w /var/cache/app-info -a -e /usr/bin/appstreamcli; then appstreamcli refresh &gt; /dev/null; fi'</h4>
+<p>这一步是在安装问题中sudo apt-get update 中遇到的</p>
+<h3>解决办法：</h3>
+<h4>sudo pkill -KILL appstreamcli</h4>
+<p>（这一步主要是杀死进程）   </p>
+<h2>2.设置密钥时出现如下错误</h2>
+<p>!<显示错误>(sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116） <br />
+gdp:冲突的指令</p>
+<h3>解决办法：</h3>
+<p>如果在连接密钥服务器时遇到了问题，可以尝试在上面的命令中用 hkp://pgp.mit.edu:80 或 hkp://keyserver.ubuntu.com:80 来替换。 <br />
+这一步主要是因为由于网造成的。</p>
+<h2>3.安装ros-kinetic时出现错误</h2>
+<h4>sudo apt-get install ros-kinetic-desktop-full</h4>
+<p>执行上述命令时会出现如下错误 <br />
+E: 文件 list 第 1 行的记录格式有误 /etc/apt/sources.list.d/ros-latest.list (URI parse)
+E: 无法读取源列表。   </p>
+<h3>解决办法</h3>
+<p>执行下述命令即可解决   </p>
+<h4>sudo rm /etc/apt/sources.list.d/ros-latest.list</h4>
+<h2>4.找不到bash目录</h2>
+<p>错误：bash: /opt/ros/kinetic/setup.bash: 没有那个文件或目录 <br />
+出现这一步主要是因为bashrc里面有重复多余的配置，可执行下述命令 <br />
+gedit ~/.bashrc <br />
+在打开文件的最后找到bash: /opt/ros/kinetic/setup.bash 删除重复的多余配置,如果没有多余项查看这句话拼写是否正确，或者与你的ros版本相称 <br />
+如果这一步还是不行，那么你应该是ros-kinetic没安装好，你应当重新安装sudo apt-get install ros-kinetic-desktop-full 这条命令。   </p>
+<h1>5.Ubuntu16.04安装ROS 过程中中显示无法定位软件解决办法</h1>
+<p>错误如下： <br />
+!<显示图片错误>(/计算机/ROS机器人/ROS错误总结/图片1.png）   </p>
+<h3>解决办法</h3>
+<p>解决办法</p>
+<h4>deb http://packages.ros.org/ros/ubuntu xenial maindeb http://packages.ros.org/ros-shadow-fixed/ubuntu xenial main</h4>
+<h1>6.实现Linux与Windows之间的复制</h1>
+<h2>只需要在ubuntu安装一个vmware-tools的工具。具体实现如下：</h2>
+<h3>1.打开虚拟机的菜单中文为“虚拟机”，英文是“VM”，下拉框中会有一个Install vmware tools 工具的安装选项。</h3>
+<h3>2.点击之后，在CD-ROM中生成在ubuntu的桌面下会出现 VMwareTools-9.2.3-1031360.tar.gz 的文件（你的版本号跟我不同，内容一样），当前为路径（/media/VMware Tools）。</h3>
+<h3>3.将此文件复制到随便文件下进行解压，本人如下操作：</h3>
+<pre><code>            cp  VMwareTools-9.2.3-1031360.tar.gz   /tmp
+            cd  /tmp
+            tar -xzvf VMwareTools-9.2.3-1031360.tar.gz
+</code></pre>
+
+<p>当然自己手动操作也一样的道理，文件拷贝的路径不同也没影响。 </p>
+<h3>4.这是会出现解压后的目录( vmware-tools-distrib目录）。然后执行编译操作。然后打开命令窗到指定安装包路径，执行：</h3>
+<pre><code>               sudo  root
+               sudo ./vmware-install.pl
+    最好根权限运行，以防无法编译。 
+</code></pre>
+
+<p>开始进行安装，遇到什么提醒默认设置即可，一路回车。如果执行过程中出现“…致命错误：Linux/smp_lock.h没有那个文件或目录，编译中断….”的错误，不用理会只管一路回车即可。 </p>
+<h3>5.安装完成提醒：</h3>
+<p>　　　Enjoy,  <br />
+　　　–the VMware team </p>
+<h3>6.重新启动ubuntu系统，大功告成。</h3>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
