@@ -3,8 +3,8 @@
 正解是指已知L1的旋转角度α和L2的旋转角度β，求末端点E的坐标(X,Y,Z)。
 逆解是指已知末端点E的坐标(X,Y,Z)，求L1的旋转角度α和L2的旋转角度β。
 下面两幅图依次是机械臂的侧视图和俯视图。  
-    <div align="center">![avatar](/机械臂运动学解析/1.JPG)</div>   
-    <div align="center">![avatar](/机械臂运动学解析/2.JPG)</div>   
+    <div align="center">![avatar](/应用案例开发/机械臂运动学解析/1.JPG)</div>   
+    <div align="center">![avatar](/应用案例开发/机械臂运动学解析/2.JPG)</div>   
 其中，OA能左右旋转，AB、BC能上下旋转，CD始终保持水平状态，DE始终保持垂直状态。  
 参数：
   
