@@ -3,6 +3,16 @@
 #### 介绍
 Ubuntu安装、ROS安装及ROS架构简介
 
+#### Git基本操作
++ 初始化`git init`
++ 读取地址`git remote add origin`
++ 拉取码云上的所有文件到项目中来`git pull origin master`
++ 添加文件`git add .`(add空格后有个点别忘了)
++ 添加注释`git commit -m "注释原因"`来说明自己为什么要上传，方便以后自己查阅
++ 提交到码云上面`git push origin master`  
+  第一次`git push -u origin master`第二次提交就按照上面的写法即可不在需要加`-u`
++ 待定
+
 #### 软件架构
 软件架构说明
 
