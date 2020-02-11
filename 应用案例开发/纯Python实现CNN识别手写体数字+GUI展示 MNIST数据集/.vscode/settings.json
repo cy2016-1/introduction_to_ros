@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": "C:\\Users\\LejuRobot\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "python.linting.pylintArgs": [
+        "--errors-only",
+        "--disable=E0401",
+        "--extension-pkg-whitelist=PyQt5"
+    ],
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
+}
